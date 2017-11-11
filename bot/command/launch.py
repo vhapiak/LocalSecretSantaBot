@@ -35,7 +35,7 @@ class LaunchCommand(Command):
         responses = map(lambda appointment: _makeResponse(name, appointment), appointments)
 
         group['launched'] = True
-        self.db.groups.update(group)
+        self.db.groups.update(group, doc_ids=[group.doc_id])
 
         return responses
 

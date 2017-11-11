@@ -24,5 +24,5 @@ class JoinCommand(Command):
             return [Response(user.chatId, 'You are already in this group!')]
 
         group['users'].append(user.userId)
-        self.db.groups.update(group)
+        self.db.groups.update(group, doc_ids=[group.doc_id])
         return [Response(user.chatId, 'You are joined to group!')]
